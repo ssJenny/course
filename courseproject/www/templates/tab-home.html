@@ -1,0 +1,132 @@
+<ion-view view-title="Dashboard" hide-nav-bar="true">
+	<style>
+		a{
+			text-decoration: none;
+		}
+		.card{
+			width: 100%;
+			margin: 0;
+			margin-bottom: 20px;
+		}
+		.box{
+			width: 100%;
+			height: 4.65rem;
+		}
+		.box img{
+			width: 100%;
+			height: auto;
+		}
+		.col .item{
+			border: 0;
+			text-align: left;
+		}
+ 		
+		.bar{
+			height: 1.65rem;
+			border-top: 1px solid #ddd;
+		}
+		.bar .title{
+			height: 1.65rem;
+			line-height:1.65rem;
+			font-size: 0.5rem;
+		}
+		.list:nth-of-type(2) .bar{
+			border-top: 1px solid #ddd;
+		}
+		.bar .more{
+			position: absolute;
+			right: 0.2rem;
+		}
+		.bar .more i{
+			margin-left: 10px;
+		}
+		.list p{
+			font-size: 0.4rem;
+		}
+		.list h2{
+			font-size: 0.5rem;
+		}
+		.col-50{
+			display: inline-block;
+		}
+	</style>
+  <ion-content>
+  	
+  	<!--头部搜索栏-->
+    <div class="list homepage-head-search" style="margin-bottom: 0; ">
+		  <div class="item item-input-inset">
+			<img src="img/person_touxiang.png" style="width: 3.0em;height: 3.0em;" ng-click="toggleLeftSideMenu()"/>
+		    <label class="item-input-wrapper" style="margin-left: 0.8em; ">
+		      <input type="text" placeholder="Search" style="height: 3.0em; ">
+		    </label>
+		    <button class="button button-small ion-search" style="font-size: 1.5em; outline: none;">
+		    </button>
+		  </div>
+		</div>
+		
+		<!--轮播图-->
+		 <ion-slide-box auto-play="true" does-continue="true" slide-interval="2000">
+      <ion-slide ng-repeat="items in lunboPic">
+        <div class="box">
+          <img ng-src="img/{{items.imgsrc}}" alt="">
+        </div>
+      </ion-slide>
+      
+    </ion-slide-box>
+    
+    <!--好评-->
+    <div class="list card">
+    	<div class="bar bar-header bar-light" style="position: static;">
+			  <h1 class="title" style="text-align: left;">好评榜</h1>
+			</div>
+			<div class="row" ng-repeat="courseObj in homeGoodlistRows">
+				<div class="col" ng-repeat="course in courseObj" ng-click="tz_study(courseObj.id)">
+					
+						<div class="item item-body">
+							<img class="full-image" src="img/{{course.imgsrc}}"/>
+							<h2>{{course.title}}</h2>
+							<p>{{course.main}}</p>
+						</div>
+					
+				</div>
+			</div>
+		</div>
+		
+    <!--最新-->
+    <div class="list card">
+    	<div class="bar bar-header bar-light" style="position: static;">
+			  <h1 class="title" style="text-align: left;">最新课程
+			  	<a href="" class="more">更多<i class="ion-ios-arrow-forward"></i></a>
+			  </h1>
+			</div>
+			<div class="row" ng-repeat="courseObj in homeNewListRow">
+				<div class="col" ng-repeat="course in courseObj" ng-click="tz_study(course.id)">
+					
+						<div class="item item-body">
+							<img class="full-image" src="img/{{course.imgsrc}}"/>
+							<h2>{{course.title}}</h2>
+							<p>{{course.main}}</p>
+						</div>
+					
+				</div>
+			</div>
+    </div>
+    
+    <!--猜你喜欢-->
+    
+	<div class="list">
+		<div class="bar bar-header bar-light" style="position: static;">
+		  <h1 class="title" style="text-align: left;">猜你喜欢
+		  </h1>
+		</div>
+	    <a class="item item-thumbnail-left" href="#" ng-repeat="courseObj in homechooseList">
+	      <img class="full-image" src="img/{{courseObj.imgsrc}}"/>
+			<h2>{{courseObj.title}}</h2>
+			<p>{{courseObj.main}}</p>
+	    </a>
+
+	</div>
+    
+    
+  </ion-content>
+</ion-view>

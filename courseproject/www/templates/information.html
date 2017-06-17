@@ -1,0 +1,92 @@
+<ion-view view-title="information"  hide-nav-bar="true">
+	<style type="text/css">
+		.user-avatar{
+			height: 50%;
+			background:  url(img/person_01.png) 0 0 no-repeat;
+			text-align: center;
+			color: #fff;
+			margin-bottom: 0;
+		}
+		.user-avatar-box{
+			width: 5rem;
+			height: 4.5rem;
+			margin: 0 auto;
+			margin-top: 2.1rem;
+			margin-bottom: 0.5rem;
+			position: relative;
+		}
+		.user-avatar-box>i{
+			display: inline-block;
+			position: absolute;
+		}
+		.person_icon_top{
+			left: 0;
+			top: -1em;
+		}
+		.person_icon_bottom{
+			right: 0;
+			bottom: 0;
+		}
+		.user-avatar img{
+			width: 60%;
+			/*height: 80%;*/
+		}
+		.user-avatar p{
+			margin: 0.3rem auto 0 auto;
+		}
+		.btn-control {
+			text-align: center;
+		}
+		.btn-control button{
+			width: 4rem;
+    		height: 1rem;
+		}
+	</style>
+  <ion-content>
+    <div class="list user-avatar">
+			<div class="user-avatar-box">
+				<i class="person_icon_top">
+					<img src="img/person_03.png"/>
+				</i>
+				<img src="img/person_touxiang.png" alt="">
+				<p>{{user.name}}</p>
+				<i class="person_icon_bottom">
+					<img src="img/person_04.png"/>
+				</i>
+			</div>
+    </div>
+    
+    <div class="list">
+
+		  <a class="item item-icon-left" href="#">
+		    <i class="icon ion-ios-person-outline"></i>
+		     <span class="item-note">
+					{{user.name}}
+		    </span>
+		  </a>
+		
+		  <a class="item item-icon-left " href="#">
+		    <i class="icon ion-ios-email-outline"></i>
+		     <span class="item-note">
+		      {{user.email}}
+		    </span>
+		  </a>
+		
+		  <a class="item item-icon-left" href="#">
+		    <i class="icon ion-ios-telephone-outline"></i>
+		    <span class="item-note">
+		      {{user.phone}}
+		    </span>
+		  </a>
+		
+		
+		</div>
+		
+		<div class="list btn-control">
+			
+			<button class="button button-positive" ng-click="logOut()">
+			  退出登录
+			</button>
+		</div>
+  </ion-content>
+</ion-view>

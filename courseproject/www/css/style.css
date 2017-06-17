@@ -1,0 +1,40 @@
+/* Empty. Add your own CSS if you like */
+.list .col{
+			text-align: center;
+			font-size: 0.4rem;
+		}
+		.drown-menu .row .col:first-child{
+			border-right: 1px solid #ddd;
+		}
+		.drown-menu{
+			border-bottom: 1px solid #ddd ;
+		}
+		.course-list{
+			background: #ddd;
+		}
+		.course-list a{
+			display: inline-block;
+			margin: 5px 0 5px 0;
+			margin-left: 2%;
+			border: 1px solid #ddd;
+			background: #fff;
+			text-align: center;
+			height: 0.9rem;
+			line-height: 0.9rem;
+			width: 22.5%;
+			text-decoration: none;
+			color: #000;
+		}
+		.drown-menu .on{
+			color: #007AFF;
+		}
+		.price-list a{
+			display: block;
+			background: #ddd;
+			height: 1.2rem;
+			line-height: 1.2rem;
+			color: #000;
+			text-decoration: none;
+			padding-left: 1rem;
+			border-bottom: 2px #D1D3D6 solid;
+		}

@@ -1,0 +1,52 @@
+<ion-view view-title="Chats" hide-nav-bar="true">
+	<style type="text/css">
+		
+	</style>
+  <ion-content>
+  	<ion-refresher pulling-text="下拉刷新" on-refresh="doRefresh()"></ion-refresher>
+  	<!--顶部搜索-->
+		<div class="bar bar-header item-input-inset">
+		  <label class="item-input-wrapper">
+		     <i class="icon ion-ios-search"></i>
+		    <input type="search" placeholder="请输入关键词">
+		  </label>
+		</div>
+	
+	<!--下拉菜单-->
+	 <div class="list drown-menu">
+		<div class="row">
+			<div class="col" ng-click="courseToggle()" ng-class="{'on':isCourseOn}">
+				课程列表<i class="ion-ios-arrow-down"></i>
+			</div>
+			<div class="col" ng-click="priceToggle()" ng-class="{'on':isPriceOn}">
+					价格<i class="ion-ios-arrow-down"></i>
+			</div>
+		</div>
+	</div>
+ 	
+ 	<!--课程菜单列表-->
+ 	<div class="list course-list" ng-hide="courseFlag">
+ 		<a href="" ng-repeat="courselist in courseListBtns">
+ 			{{courselist.btnName}}
+ 		</a>
+ 	</div>
+ 	
+ 	<!--价格菜单列表-->
+ 	<div class="list price-list" ng-hide="priceFlag">
+ 		<a href="" ng-repeat="pricelist in priceBtns">
+ 			{{pricelist.btnName}}
+ 		</a>
+ 	</div>
+	
+	<!--课程列表-->
+	<div class="list">
+	    <a class="item item-thumbnail-left" href="#" ng-repeat="courseObj in chats">
+	      	<img class="full-image" src="{{courseObj.imgsrc}}"/>
+			<h2>{{courseObj.titleEn}}</h2>
+			<p>{{courseObj.price}}</p>
+	    </a>
+	</div>
+	
+	<ion-infinite-scroll on-infinite="loadMore()" ng-if="showMore" immediate-check="false"></ion-infinite-scroll>
+  </ion-content>
+</ion-view>

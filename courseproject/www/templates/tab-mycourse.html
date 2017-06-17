@@ -1,0 +1,102 @@
+
+
+<ion-view view-title="Account" hide-nav-bar="true">
+	<style type="text/css">
+	.edit{
+		display: inline-block;
+		position: absolute;
+		right: 10px;
+		height: 100%;
+		font-size: 0.4rem;
+	}
+	.notLoginContent{
+		margin-top: 50%;
+		text-align: center;
+	}
+	.notLoginContent a{
+		text-decoration: none;
+		color: #9E9E9E;
+	}
+</style>
+  <ion-content>
+  
+	
+	<!--顶部-->
+		<div class="bar bar-header item-input-inset">
+		  <h1 class="title">我的课程
+		  	<div class="edit" ng-click="showEdit()">编辑</div>
+		  </h1>
+		</div>
+	
+	<!--下拉菜单-->
+	 <div class="list drown-menu">
+		<div class="row">
+			<div class="col" ng-click="mycourseToggle()" ng-class="{'on':courseSelectOn}">
+				我的课程<i class="ion-ios-arrow-down"></i>
+			</div>
+			<div class="col" ng-click="collectToggle()" ng-class="{'on':collectSelectOn}">
+				我的收藏<i class="ion-ios-arrow-down"></i>
+			</div>
+		</div>
+	</div>
+		
+	<div class="content notLoginContent" ng-hide="loginFalg">
+			请<a href="#/tab/login">登录</a>
+	</div>
+	
+	<!--我的课程列表-->
+
+
+	<ion-list  ng-hide="mycourseIsVisibale"  show-delete="shouldShowDelete" show-reorder="shouldShowReorder" can-swipe="listCanSwipe">
+  <ion-item ng-repeat="item in itemFir" class="item-thumbnail-left">
+
+    <img ng-src="{{item.imgsrc}}">
+    <h2>{{item.title}}</h2>
+    <p>{{item.num}}</p>
+    <p>{{item.nums}}</p>
+    <ion-option-button class="button-positive"  ng-click="share(item)">
+      分享
+    </ion-option-button>
+   
+    <ion-delete-button class="ion-minus-circled"  ng-click="items.splice($index, 1)">
+    </ion-delete-button>
+    <ion-reorder-button class="ion-navicon" on-reorder="reorderItem(item, $fromIndex, $toIndex)">
+    </ion-reorder-button>
+
+  </ion-item>
+</ion-list>
+
+	
+	<!--收藏课程列表-->
+	<!--<div class="list" ng-hide="collectIsVisibale">
+	    <a class="item item-thumbnail-left" href="#" ng-repeat="courseObj in itemSec">
+	      <img class="full-image" src="{{courseObj.imgsrc}}"/>
+	      <h2>{{courseObj.title}}</h2>	
+				<p>已学：{{courseObj.num}}</p>
+				<p>总学时：{{courseObj.nums}}</p>
+	    </a>
+	</div>-->
+	
+
+	<ion-list  ng-hide="collectIsVisibale"  show-delete="shouldShowDelete" show-reorder="shouldShowReorder" can-swipe="listCanSwipe">
+  <ion-item ng-repeat="item in itemSec" class="item-thumbnail-left">
+
+    <img ng-src="{{item.imgsrc}}">
+    <h2>{{item.title}}</h2>
+    <p>{{item.num}}</p>
+    <p>{{item.nums}}</p>
+    <ion-option-button class="button-positive"  ng-click="share(item)">
+      分享
+    </ion-option-button>
+   
+    <ion-delete-button class="ion-minus-circled"  ng-click="items.splice($index, 1)">
+    </ion-delete-button>
+    <ion-reorder-button class="ion-navicon" on-reorder="reorderItem(item, $fromIndex, $toIndex)">
+    </ion-reorder-button>
+
+  </ion-item>
+</ion-list>
+
+
+  </ion-content>
+</ion-view>
