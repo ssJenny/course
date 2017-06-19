@@ -18,6 +18,7 @@
 	JAVA_HOME
 	d:\jdk
 Path
+
 	;%JAVA_HOME%\bin;%JAVA_HOME%\jre\bin
 CLASSPATH
 	.;%JAVA_HOME%\lib;%JAVA_HOME%\lib\tools.jar
