@@ -11,7 +11,7 @@
 >> 完成安装打开终端，输入node -v，正常显示版本号则成功安装
 ### 安装Java JDK
 >> [官网](http://www.oracle.com/technetwork/java/javase/downloads/index.html)下载
->> 环境变量配置
+
 >>> 
 	JAVA_HOME
 	d:\jdk
@@ -22,7 +22,7 @@ CLASSPATH
 
 ### 安装Android SDK
 >> [下载](https://developer.android.com/studio/index.html)安装包
->> 环境变量配置
+
 >>>
  SDK环境变量配置：
 Path
