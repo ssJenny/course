@@ -1,0 +1,134 @@
+<ion-view view-title="学习页面" hide-tabs="true"> 
+    <style>
+        .col_spe{
+            text-align: center;
+            width: 5.4rem;
+        }
+        .list_mulu{
+            padding-left: 1.8rem;
+            overflow: scroll;
+        }
+        .circle{
+            padding-left: 0.6rem;
+            border-left: 1px dashed #ccc;
+            position: relative;
+            line-height: 1.5rem;
+            height: 1.5rem;
+        }
+        .span_01{
+            width: 4.6rem;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+            overflow: hidden;
+        }
+        .span_02{
+            width: 3rem;
+            float: right;
+        }
+        .span_cir{
+            width: 0.3rem;
+            height: 0.3rem;
+            background:  url(img/study_circle.png) no-repeat;
+            position: absolute;
+            top: 0.6rem;
+            left: -0.17rem;
+            background-size: 100% 100%;
+        }
+        .active{
+        	color: #0092DC;
+        }
+        .inactive{
+        	color: #000;
+        }
+    </style>
+    <ion-content>
+
+        <div class="study_top" style=" top:0;left:0;width:100%;z-index:9999;">
+            <div style="width:100%; height:auto;background:#fff;position:relative">
+                <div ng-show="isLogin" ng-hide="ifPayed.ifPay" style="position:absolute; top:0; left:0; right:0; bottom:0; background:rgba(0, 0, 0,0.7);z-index:1000">
+                	<span style="color:#fff;display:block; margin-top: 22%;;text-align:center;text-decoration: none;font-size: 0.4rem;">请在下方购买</span>
+                </div>
+                
+                <div ng-hide="isLogin" style="position:absolute; top:0; left:0; right:0; bottom:0; background:rgba(0, 0, 0,0.7);z-index:1000">
+                	<a style="color:#fff;display:block;padding-top:2.2rem;text-align:center;text-decoration: none;font-size: 0.4rem;" href="#/tab/usercenter">请先登录</a>
+                </div>
+                <video ng-src="{{Vurl}}" controls loop width="100%" height="auto"></video>
+            </div>
+            <div class="row nav" style="background:#ccc">
+                <div class="col col-50 col_spe" id="contents" ng-click="contents_left()" ng-style="color" style="border-right:2px solid #fff">
+                    目录<i class="icon ion-chevron-down"></i>
+                </div>
+                <div class="col col-50 col_spe" id="detail" ng-click="detail_right()" ng-style="colorc">
+                    详情<i class="icon ion-chevron-down"></i>
+                </div>
+            </div>
+        </div>
+
+        <div class="study_mlxq" style=" margin-bottom:1.4rem;height:auto">
+            <div class="content ionic-pseudo" ng-show="mymulu" ng-repeat="study in studyMulu.CDlist">
+                <div class="list" style="margin-bottom:0;">
+                    <a href="" class="item">{{study.CDname}}</a>
+                </div>
+                <div class="list_mulu" ng-repeat="vlist in study.Vlist" ng-click="play(vlist)" ng-class="{true: 'active', false: 'inactive'}[isViewed]">
+                    <div class="circle" >
+                        <span class="span_02">{{vlist.Vtime}}分钟</span>
+                        <div class="span_01">{{vlist.Vname}}</div>
+                        <span class="span_cir"></span>
+                    </div>
+                </div>
+            </div>
+            <div class="content ionic-pseudo" ng-show="mydetail">
+                <div class="item" style="color:#0a9ec7;">
+                   {{studyMulu.Cname}}课程评价
+                </div>
+                <div class="list_detail">
+                    <div class="item item-avatar" ng-repeat="assess in studyMulu.evaluate.list">
+                        <img src="img/study_tx.jpg" alt="">
+                        <span style="text-align:left;" >{{assess.UserId}}</span>
+                        <span style="float:right;padding-right:2.5rem">{{assess.createAt}}</span>
+                        <p>{{assess.evaluate}}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </ion-content>
+
+    <ion-tabs class="tabs tabs-icon-top" ng-show="isLogin">
+        <a ng-click="modal.show()" class="tab-item">
+            <i class="icon ion-edit"></i>
+            评价
+        </a>
+        <a class="tab-item" ng-click="addCollect()" ng-class="{true: 'active', false: 'inactive'}[ifCollect.isActive]">
+            <i class="icon ion-ios-star-outline"></i>
+            	{{ifCollect.collectText}}
+        </a>
+        <a class="tab-item" ng-click="buyCourse()" ng-class="{true: 'active', false: 'inactive'}[ifPayed.isPayActive]">
+            <i class="icon ion-ios-download-outline"></i>
+            {{ifPayed.payText}}
+        </a>
+    </ion-tabs>
+    <script id="templates/modal.html" type="text/ng-template">
+    <!--<ion-modal-view>-->
+        
+    <div id="task-view" class="modal slide-in-up" ng-controller="TaskCtrl">
+        <header class="bar-positive bar bar-header">
+            <h1 class="title">写评价</h1>
+            <button class="button button-clear button-primary" ng-click="close()">关闭</button>            
+        </header>
+        <div class="padding has-header" style="width:92%;height:6rem;overflow:hidden;border:1px solid #ccc;margin:18% 4% 5%">
+            <textarea placeholder="吐槽，表扬、鼓励......" cols="50" rows="11" maxlength="300" ng-model="evaluate.evaluate"></textarea>
+        </div>
+        <p style="text-align:right;margin-right:20px;color:#ccc;">300</p>
+        <div class="row">
+            <div class="col col-33"></div>
+            <div class="col col-33">
+                <button class="button button-block button-positive" ng-click="createContact()" style="margin:0 auto;">
+                    提交
+                </button>
+            </div>
+            <div class="col col-33"></div>
+        </div>
+    </div>
+    <!--</ion-modal-view>-->
+    </script>
+</ion-view>

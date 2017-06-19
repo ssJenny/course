@@ -1,0 +1,81 @@
+<ion-view view-title="我的课程" hide-nav-bar="true">
+	<style type="text/css">
+		.edit {
+			display: inline-block;
+			position: absolute;
+			right: 10px;
+			height: 100%;
+			font-size: 0.4rem;
+		}
+		
+		.notLoginContent {
+			margin-top: 50%;
+			text-align: center;
+		}
+		
+		.notLoginContent a {
+			text-decoration: none;
+			color: #9E9E9E;
+		}
+	</style>
+	<ion-content>
+
+		<!--顶部-->
+		<div class="bar bar-header item-input-inset">
+			<h1 class="title">我的课程
+		  	<div class="edit" ng-show="isEdit"  ng-click="showEdit()">编辑</div>
+		  </h1>
+		</div>
+
+		<!--下拉菜单-->
+		<div class="list drown-menu">
+			<div class="row">
+				<div class="col" ng-click="mycourseToggle()" ng-class="{'on':courseSelectOn}">
+					我的课程<i class="ion-ios-arrow-down"></i>
+				</div>
+				<div class="col" ng-click="collectToggle()" ng-class="{'on':collectSelectOn}">
+					我的收藏<i class="ion-ios-arrow-down"></i>
+				</div>
+			</div>
+		</div>
+
+		<div class="content notLoginContent" ng-hide="loginFalg" style="font-size: 0.5rem;">
+			请
+			<a href="#/tab/usercenter">登录</a>
+		</div>
+
+		<!--我的课程列表-->
+		<ion-list ng-hide="mycourseIsVisibale" can-swipe="listCanSwipe">
+			<ion-item ng-repeat="item in itemFir" class="item-thumbnail-left" >
+
+				<img ng-src="{{item.Cpic}}" ng-click="tz_study(item.ID)">
+				<h2>{{item.Cname}}</h2>
+				<p>{{item.Cnumber}}</p>
+				<p>{{item.Cdescribe}}</p>
+
+			</ion-item>
+		</ion-list>
+		
+
+		<!--收藏课程列表-->
+		<ion-list ng-hide="collectIsVisibale" show-delete="shouldShowDelete" >
+			<ion-item ng-repeat="item in itemSec" class="item-thumbnail-left" >
+
+				<img ng-src="{{item.Cpic}}" ng-click="tz_study(item.ID)">
+				<h2>{{item.Cname}}</h2>
+				<p>{{item.Cnumber}}</p>
+				<p>{{item.Cdescribe}}</p>
+				<ion-option-button class="button-positive"  ng-click="share(item.ID)" >
+					分享
+				</ion-option-button>
+
+				<ion-delete-button class="ion-minus-circled" ng-click="deleteCollect(item.ID)">
+				</ion-delete-button>
+				<ion-reorder-button class="ion-navicon" on-reorder="reorderItem(item, $fromIndex, $toIndex)">
+				</ion-reorder-button>
+
+			</ion-item>
+		</ion-list>
+
+	</ion-content>
+</ion-view>

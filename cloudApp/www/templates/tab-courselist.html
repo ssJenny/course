@@ -1,0 +1,63 @@
+<ion-view view-title="课程列表" hide-nav-bar="true">
+	<style type="text/css">
+		
+	</style>
+  <ion-content>
+  	<ion-refresher pulling-text="下拉刷新" on-refresh="doRefresh()"></ion-refresher>
+  	<!--顶部搜索-->
+		<div class="bar bar-header item-input-inset">
+		  <label class="item-input-wrapper">
+		     <i class="icon ion-ios-search"></i>
+		    <input type="search" placeholder="请输入关键词" ng-keyup="myKeyup($event)"  ng-model="searchInputText.searchText">
+		  </label>
+		</div>
+	
+	<!--下拉菜单-->
+	 <div class="list drown-menu">
+		<div class="row">
+			<div class="col" ng-click="courseToggle()" ng-class="{'on':isCourseOn}">
+				课程列表<i class="ion-ios-arrow-down"></i>
+			</div>
+			<div class="col" ng-click="priceToggle()" ng-class="{'on':isPriceOn}">
+					价格<i class="ion-ios-arrow-down"></i>
+			</div>
+		</div>
+	</div>
+ 	
+ 	<!--课程菜单列表-->
+ 	<div class="list course-list" ng-hide="courseFlag">
+ 		<a href="" ng-repeat="courselist in courseNameData" ng-click="courseSearch('',courselist.sysId,'')">
+ 			{{courselist.title}}
+ 		</a>
+ 	</div>
+ 	
+ 	<!--价格菜单列表-->
+ 	<div class="list price-list" ng-hide="priceFlag">
+ 		<a href="" ng-repeat="pricelist in priceBtns"  ng-click="courseSearch('','',pricelist.id)">
+ 			{{pricelist.btnName}}
+ 		</a>
+ 	</div>
+	
+	<!--课程列表-->
+	<ion-list ng-hide="mycourseIsVisibale" can-swipe="listCanSwipe">
+			<ion-item ng-repeat="item in lists" class="item-thumbnail-left" ng-click="tz_study(item.ID)">
+
+				<img ng-src="{{item.Cpic}}">
+				<h2>{{item.Cname}}</h2>
+				<!--<p>{{item.Cnumber}}</p>-->
+				<p>{{item.Cprice}}</p>
+
+			</ion-item>
+		</ion-list>
+		
+	<!--<div class="list">
+	    <a class="item item-thumbnail-left" href="#" ng-repeat="courseObj in lists"  ng-click="tz_study(courseObj.ID)">
+	      	<img class="full-image" src="{{courseObj.Cpic}}"/>
+			<h2>{{courseObj.Cname}}</h2>
+			<p>{{courseObj.Cprice}}</p>
+	    </a>
+	</div>-->
+	
+	<ion-infinite-scroll on-infinite="loadMore()" ng-if="showMore" immediate-check="false"></ion-infinite-scroll>
+  </ion-content>
+</ion-view>
