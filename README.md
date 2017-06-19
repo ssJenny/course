@@ -38,6 +38,7 @@ Path
 
 ### 安装ionic
 >> cnpm install -g ionic cordova
+
 >> 切换到工程目录，创建ionic工程
 >>> ionic start myApp tabs
 
