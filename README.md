@@ -8,11 +8,13 @@
 >> 4. Android SDK
 ### 安装Node.js
 >> 前往[NodeJS官网](https://nodejs.org/en/)下载安装包，直接安装
+
 >> 完成安装打开终端，输入node -v，正常显示版本号则成功安装
 ### 安装Java JDK
 >> [官网](http://www.oracle.com/technetwork/java/javase/downloads/index.html)下载
 
->>> 
+>>> 环境变量配置
+
 	JAVA_HOME
 	d:\jdk
 Path
@@ -25,6 +27,7 @@ CLASSPATH
 
 >>>
  SDK环境变量配置：
+ 
 Path
 	
 	;D:\sdk\platform-tools;D:\sdk\tools
